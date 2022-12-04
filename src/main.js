@@ -5,12 +5,16 @@ import store from './store';
 import cors from "vue-resource/src/http/interceptor/cors";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import BootstrapVue from "bootstrap-vue";
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 //import VueResource from 'vue-resource';
 
 
 Vue.config.productionTip = false;
 Vue.use(VueAxios,axios);
+Vue.use(BootstrapVue);
 //Vue.use(VueResource);
 
 
