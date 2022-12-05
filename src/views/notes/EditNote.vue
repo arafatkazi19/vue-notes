@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-6 mx-auto">
             <div class="card">
-                <form method="post" class="p-2">
+                <form @submit.prevent="editForm" method="post" class="p-2">
                     <div class="form-group">
                         <label>Title</label>
                         <input v-model="notes.title" type="text" class="form-control" name="title"
@@ -22,7 +22,6 @@
                     </div>
 
 
-
                 </form>
             </div>
         </div>
@@ -38,55 +37,32 @@
                 notes: {
                     title: '',
                     datetime: '',
-                }
+                },
+
+                note: []
             }
         },
 
         async mounted() {
-
-            const result = await axios.get('http://localhost/NotesCake/notes/view/'+this.$route.params.id);
-            console.warn(result.data);
-            this.notes = result.data
+            // console.warn(this.$route.params.id);
+            const result = await axios.get('http://localhost/NotesCake/notes/view/' + this.$route.params.id);
+            // console.warn(result.data);
+            this.notes = result.data.note
+            console.warn(result.data.note);
             // console.log(this.$route.params.id);
         },
 
         methods: {
             editForm() {
-                // axios.post('http://localhost/NotesCake/notes/add', this.notes)
-                //     .then((res) => {
-                //         if (res.status === 200) {
-                //             console.log(res);
-                //             this.$router.push("/notes");
-                //         }
-                        // if (res.status === 200 && res.data.code === 200) {
-                        //     this.successMessage = res.data.message;
-                        //     this.$router.push("/notes");
-                        // } else {
-                        //     this.errorMessage = res.data.message;
-                        // }
-                  //  });
-
-
-                //  console.log(this.notes)
-                //   axios.post("http://localhost/NotesCake/notes/add",this.notes).then((result)=>{
-                //       console.warn(result)
-                //   })
-                // e.preventDefault();
+                axios.put('http://localhost/NotesCake/notes/edit/' + this.$route.params.id, this.notes)
+                    .then((res) => {
+                        if (res.status === 200) {
+                            // console.log(res);
+                            this.$router.push("/notes");
+                        }
+                    })
             }
         }
-
-        // created() {
-        //
-        //     axios.post("http://localhost/NotesCake/notes/add")
-        //         .then(response => {
-        //
-        //             if (response.status === 200 && response.data.code === 200) {
-        //                 this.successMessage = response.data.message;
-        //                 this.$router.push("/notes");
-        //             } else {
-        //                 this.errorMessage = response.data.message;}
-        //             });
-        // }
     }
 
 </script>
