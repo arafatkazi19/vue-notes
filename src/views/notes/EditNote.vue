@@ -15,8 +15,8 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-8">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="col-md-8 mx-auto">
+                            <button type="submit" class="btn btn-primary mr-1">Submit</button>
                             <router-link class="btn btn-warning" to="/notes">Go Back</router-link>
                         </div>
                     </div>

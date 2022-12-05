@@ -6,6 +6,7 @@ import VueRouter from 'vue-router'
 import NoteList from "@/views/notes/NoteList.vue";
 import CreateNote from '@/views/notes/CreateNote.vue';
  import EditNote from "@/views/notes/EditNote";
+ import ViewNote from "@/views/notes/ViewNote";
  import TestView from "@/views/TestView";
 // import IdTestView from "@/views/IdTestView";
 import RouterView from "@/views/RouterView";
@@ -38,6 +39,12 @@ const routes = [
         path: "/notes/edit/:id",
         name: "EditNote",
         component: EditNote,
+    },
+
+    {
+        path: "/notes/view/:id",
+        name: "ViewNote",
+        component: ViewNote,
     },
 
     {

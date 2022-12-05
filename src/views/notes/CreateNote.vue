@@ -1,7 +1,7 @@
 <template>
     <div class="row">
-            <div class="col-md-6 mx-auto">
-                <div class="card">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
                 <form @submit.prevent="addForm" method="post" class="p-2">
                     <div class="form-group">
                         <label>Title</label>
@@ -15,13 +15,12 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-8">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="col-md-8 mx-auto">
+                            <button type="submit" class="btn btn-primary mr-1">Submit</button>
                             <router-link class="btn btn-warning" to="/notes">Go Back</router-link>
+
                         </div>
                     </div>
-
-
 
                 </form>
             </div>
@@ -47,7 +46,7 @@
                 axios.post('http://localhost/NotesCake/notes/add', this.notes)
                     .then((res) => {
                         if (res.status === 200) {
-                            console.log(res);
+                            //console.log(res);
                             this.$router.push("/notes");
                         }
                         // if (res.status === 200 && res.data.code === 200) {
@@ -58,7 +57,6 @@
                         // }
                     });
 
-
                 //  console.log(this.notes)
                 //   axios.post("http://localhost/NotesCake/notes/add",this.notes).then((result)=>{
                 //       console.warn(result)
@@ -67,18 +65,5 @@
             }
         }
 
-        // created() {
-        //
-        //     axios.post("http://localhost/NotesCake/notes/add")
-        //         .then(response => {
-        //
-        //             if (response.status === 200 && response.data.code === 200) {
-        //                 this.successMessage = response.data.message;
-        //                 this.$router.push("/notes");
-        //             } else {
-        //                 this.errorMessage = response.data.message;}
-        //             });
-        // }
     }
-
 </script>

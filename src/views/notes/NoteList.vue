@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <div class="card">
@@ -22,11 +21,16 @@
                                 <td>{{ note.datetime }}</td>
                                 <td>{{ note.title }}</td>
                                 <td>
-                                    <button class="btn btn-danger" v-on:click="deleteNote(note.id)">Delete</button>
-<!--                                    <button class="btn btn-warning" v-on:click="editNote(note.id)">Edit</button>-->
+                                    <router-link class="btn btn-primary" :to="'/notes/view/'+note.id">View</router-link>
                                 </td>
+
                                 <td>
                                     <router-link class="btn btn-warning" :to="'/notes/edit/'+note.id">Edit</router-link>
+                                </td>
+
+                                <td>
+                                    <button class="btn btn-danger" v-on:click="deleteNote(note.id)">Delete</button>
+                                    <!--                                    <button class="btn btn-warning" v-on:click="editNote(note.id)">Edit</button>-->
                                 </td>
                             </tr>
                             </tbody>
@@ -59,7 +63,7 @@
         methods: {
             fetchItems() {
                 axios.get('http://localhost/NotesCake/notes', {}).then(res => {
-                    console.log(res.data);
+                    //console.log(res.data);
                     this.notes = res.data.notes;
                     //  console.log(res.data.notes);
                     //  console.log(res.data);
